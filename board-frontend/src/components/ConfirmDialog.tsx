@@ -1,0 +1,7 @@
+import { useEffect, useRef } from 'react';
+import { AlertTriangle, X } from 'lucide-react';
+export default function ConfirmDialog({ title, description, confirmLabel, busy, onConfirm, onClose, danger = false }: { title: string; description: string; confirmLabel: string; busy?: boolean; onConfirm: () => void; onClose: () => void; danger?: boolean }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => { const dialog = ref.current!; if (!dialog.open) dialog.showModal(); const previous = document.body.style.overflow; document.body.style.overflow = 'hidden'; return () => { dialog.close(); document.body.style.overflow = previous; }; }, []);
+  return <dialog className="confirm-dialog" ref={ref} aria-labelledby="dialog-title" aria-describedby="dialog-description" onCancel={event => { event.preventDefault(); if (!busy) onClose(); }}><button className="dialog-close icon-btn" aria-label="닫기" disabled={busy} onClick={onClose}><X size={19} /></button><span className={`dialog-icon ${danger ? 'danger' : ''}`}><AlertTriangle size={24} /></span><h2 id="dialog-title">{title}</h2><p id="dialog-description">{description}</p><div className="dialog-actions"><button autoFocus className="btn btn-secondary" disabled={busy} onClick={onClose}>취소</button><button className={`btn ${danger ? 'btn-danger' : 'btn-primary'}`} disabled={busy} onClick={onConfirm}>{busy ? '처리 중…' : confirmLabel}</button></div></dialog>;
+}

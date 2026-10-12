@@ -9,7 +9,7 @@ erDiagram
     users {
         BIGINT id PK "AUTO_INCREMENT"
         VARCHAR(20) nickname "NOT NULL, 표시용 (trim)"
-        VARCHAR(20) nickname_key UK "NOT NULL, 로그인·중복 검사용 (trim + lowercase)"
+        VARCHAR(20) nickname_key UK "NOT NULL, UNIQUE, 로그인·중복 검사용 (trim + lowercase)"
         VARCHAR(100) password_hash "NOT NULL, BCrypt"
     }
 

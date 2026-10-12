@@ -77,4 +77,5 @@ chmod +x gradlew
 ## 관련 문서
 
 - [기능 명세서](https://www.notion.so/064b6a09002d4a9bab9cf490cf32a865)
+- [ERD](ERD.md)
 - [프론트엔드 실행 안내](../board-frontend/README.md)

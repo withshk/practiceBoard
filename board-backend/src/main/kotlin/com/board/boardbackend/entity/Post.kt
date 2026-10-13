@@ -16,8 +16,7 @@ import java.time.Instant
 class Post ( //유저가 입력하는것
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @Column(unique = false, nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     var author: User, // 유저 엔티티에 있는 유저 아이디를 참조
 
     @Column(unique = false, nullable = false, length = 100)

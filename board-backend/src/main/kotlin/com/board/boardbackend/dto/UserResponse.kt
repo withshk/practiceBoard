@@ -1,4 +1,7 @@
 package com.board.boardbackend.dto
 
-class UserResponse {
+data class UserResponse (
+    val id: Long,
+    val nickname: String,
+) {
 }
